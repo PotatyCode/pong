@@ -6,13 +6,15 @@ struct Ball {
     Screen screen;
     Vector2 Pos;
     Color color = WHITE;
-    Vector2 Speed{10.0f, 10.0f};
-    static constexpr int radius{50};
+    Vector2 Speed{5.0f, 4.0f};
+    static constexpr int radius{30};
 
 
-    void move(Padel& padel);
-    bool NotOutOfBounds();
+    void move(Padel& padel, Padel& padel2);
+    bool NotOutOfBounds() const;
     bool TopOrBottom();
+    bool hitSides();
+    bool Sides();
     void Draw();
 
 
