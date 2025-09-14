@@ -34,6 +34,7 @@ class Game {
     }
 };
 
+void DrawScores(Game& game);
 void DrawSplashScreen(std::vector<button>& button);
 void UpdateGame(Game& game);
 void DrawGame(Game& game);
@@ -88,6 +89,8 @@ void DrawGame(Game& game) {
             game.Player.draw();
             game.Enemy.draw();
             game.ball.Draw();
+            DrawLine(game.screen.center.x, GetScreenHeight(), game.screen.center.x, 100, WHITE);
+            DrawScores(game);
             break;
         }
         case Game::PAUSED: {
@@ -101,6 +104,10 @@ void DrawGame(Game& game) {
     }
     EndDrawing();
 }
-void DrawScores(Padel& padel, Screen& screen) {
-    DrawText(padel.score, screen.center., int posY, int fontSize, Color color)
+void DrawScores(Game& game) {
+    static Vector2 boxSize = {160, 100};
+    static Vector2 BoxPos = {game.screen.center.x - (boxSize.x / 2), 0};
+    static Vector2 ScorePos = {BoxPos.x + 50, BoxPos.y};
+    DrawRectangleLines(BoxPos.x, BoxPos.y, boxSize.x, boxSize.y, WHITE);
+    DrawText(game.Player.scorestr.c_str(), ScorePos.x, ScorePos.y, 100, WHITE);
 }
